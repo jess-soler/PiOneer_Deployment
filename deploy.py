@@ -40,6 +40,8 @@ Purpose: Deployment Code for Final NASA Space Grant
 #TODO: look into API to get ThingSpeak data in GUI
 
 
+#TODO : state machine-- change toggle to do flags-- true/false
+
 
 # LIBRARIES
 import tkinter as tk
@@ -52,6 +54,9 @@ from time import sleep
 class PioneerDeploy:
     #TODO: create __init__ method
     def __init__(self, root):
+        # toggles, autonomous GUI keyboard hand
+        self.is_autonomous = False
+        
         # Initialize class with main Tkinter window
         self.main_window = root
         
@@ -131,20 +136,26 @@ class PioneerDeploy:
         self.thingspeak_label = tk.Label(self.thingspeak_frame, text="ThingSpeak", font=("Arial", 16))
         self.thingspeak_label.pack(pady=10)
 
-#--Toggle Function, Button Commands to stop/start mutli threading ----------------------------#
+#---TOGGLES-----------------------------------------------------------------------------------#
+#---Toggle Function, Button Commands to stop/start mutli threading ---------------------------#
 #---Autonomous Navigation (threaded)----------------------------------------------------------#
-    def toggle_autonomous_navigation(self):
+# WHYYYYYY?!!!??!?!?!?!
+    def toggle_autonomous_navigation(self):        
         # Toggle function for autonomous navigation
-        if self.start_stop_auto_nav['text'] == "Start Autonomous Navigation":
+        if self.is_autonomous == True:
             self.start_stop_auto_nav.config(text="Stop Autonomous Navigation")
             print("Autonomous navigation started.")
             # start a thread for the obstacle avoidance
-            self.start_thread_obstacle_avoidance()
+            #self.start_thread_obstacle_avoidance()
+            self.is_autonomous = False
+            
         else:
+            self.is_autonomous = True
             self.start_stop_auto_nav.config(text="Start Autonomous Navigation")
             print("Autonomous navigation stopped.")
             # stop the thread for the obstacle avoidance
-            self.stop_thread_obstacle_avoidance()
+            #self.stop_thread_obstacle_avoidance()
+
 
 #---GUI Navigation Control (threaded)---------------------------------------------------------#
     def toggle_gui_navigation(self):
@@ -233,7 +244,7 @@ class PioneerDeploy:
             # stop the thread for the sensors
             self.stop_sensors()
 
-#--Multi Threading Code and Functions-------------------------------------------------------------------#
+#--THREADING--------------------------------------------------------------------------------------------#
 #--Threading (obstacle avoidance)-----------------------------------------------------------------------#
     def obstacle_avoidance(self):
         while not self.stop_thread:
