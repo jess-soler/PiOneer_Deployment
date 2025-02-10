@@ -41,6 +41,9 @@ Purpose: Deployment Code for Final NASA Space Grant
 
 
 #TODO : state machine-- change toggle to do flags-- true/false
+#TODO: http clickable label URL for thingspeak
+#TODO: integrate live video
+
 
 
 # LIBRARIES
