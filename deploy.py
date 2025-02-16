@@ -5,6 +5,8 @@ Created: 1/10/2025
 Purpose: Deployment Code for Final NASA Space Grant
 """
 
+import ir_remote_navigation
+
 
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 # Copyright (c) 2017 Dexter Industries Released under the MIT license
@@ -142,23 +144,18 @@ class PioneerDeploy:
 #---TOGGLES-----------------------------------------------------------------------------------#
 #---Toggle Function, Button Commands to stop/start mutli threading ---------------------------#
 #---Autonomous Navigation (threaded)----------------------------------------------------------#
-# WHYYYYYY?!!!??!?!?!?!
-    def toggle_autonomous_navigation(self):        
-        # Toggle function for autonomous navigation
-        if self.is_autonomous == True:
+    def toggle_autonomous_navigation(self):
+        # Toggle function for autonomous navigation control
+        if self.start_stop_auto_nav['text'] == "Start Autonomous Navigation":
             self.start_stop_auto_nav.config(text="Stop Autonomous Navigation")
             print("Autonomous navigation started.")
-            # start a thread for the obstacle avoidance
-            #self.start_thread_obstacle_avoidance()
-            self.is_autonomous = False
-            
+            # start a thread for the autonomous navigation
+            self.start_thread_obstacle_avoidance()
         else:
-            self.is_autonomous = True
             self.start_stop_auto_nav.config(text="Start Autonomous Navigation")
             print("Autonomous navigation stopped.")
-            # stop the thread for the obstacle avoidance
-            #self.stop_thread_obstacle_avoidance()
-
+            # stop the thread for the autonomous navigation
+            self.stop_thread_obstacle_avoidance()
 
 #---GUI Navigation Control (threaded)---------------------------------------------------------#
     def toggle_gui_navigation(self):
@@ -354,10 +351,8 @@ class PioneerDeploy:
 #--Threading (IR Remote navigation)--------------------------------------------------------------------#
     def ir_remote_navigation(self):
         while not self.stop_thread:
-            print("IR Remote Navigation!!!!!!!")
+            ir_remote_navigation.read_ir_keys()
             sleep(1)
-        # print("IR remote controller navigation control started.")
-        # nav_remote.run_remote()
         
     def start_ir_remote_navigation(self):
         self.stop_thread = False
