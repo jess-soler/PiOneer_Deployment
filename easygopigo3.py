@@ -10,22 +10,22 @@ import time
 import os
 import math
 import json
-import easysensors
-from I2C_mutex import Mutex
+# import easysensors
+# from I2C_mutex import Mutex
 
 __version__ = "1.3.2.1"
 
-try:
-    from di_sensors import easy_line_follower, easy_distance_sensor, easy_light_color_sensor, easy_inertial_measurement_unit
-    di_sensors_available = True
-except ImportError as err:
-    di_sensors_available = False
-    print("Importing di_sensors error: {}".format(err))
-except Exception as err:
-    di_sensors_available = False
-    print("Importing di_sensors error: {}".format(err))
+# try:
+#     from di_sensors import easy_line_follower, easy_distance_sensor, easy_light_color_sensor, easy_inertial_measurement_unit
+#     di_sensors_available = True
+# except ImportError as err:
+#     di_sensors_available = False
+#     print("Importing di_sensors error: {}".format(err))
+# except Exception as err:
+#     di_sensors_available = False
+#     print("Importing di_sensors error: {}".format(err))
 
-mutex = Mutex(debug=False)
+# mutex = Mutex(debug=False)
 
 hardware_connected = True
 try:
@@ -859,301 +859,301 @@ class EasyGoPiGo3(gopigo3.GoPiGo3):
         self.close_left_eye()
         self.close_right_eye()
 
-    def init_light_sensor(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.LightSensor` object and then returns it.
+#     def init_light_sensor(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.LightSensor` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.LightSensor` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.LightSensor` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.LightSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.LightSensor` class.
 
-        """
-        return easysensors.LightSensor(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.LightSensor(port, self, use_mutex=self.use_mutex)
 
-    def init_sound_sensor(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.SoundSensor` object and then returns it.
+#     def init_sound_sensor(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.SoundSensor` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.SoundSensor` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.SoundSensor` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.SoundSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.SoundSensor` class.
 
-        """
-        return easysensors.SoundSensor(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.SoundSensor(port, self, use_mutex=self.use_mutex)
 
-    def init_loudness_sensor(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.LoudnessSensor` object and then returns it.
+#     def init_loudness_sensor(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.LoudnessSensor` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.LoudnessSensor` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.LoudnessSensor` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.LoudnessSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.LoudnessSensor` class.
 
-        """
-        return easysensors.LoudnessSensor(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.LoudnessSensor(port, self, use_mutex=self.use_mutex)
 
-    def init_ultrasonic_sensor(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.UltraSonicSensor` object and then returns it.
+#     def init_ultrasonic_sensor(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.UltraSonicSensor` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.UltraSonicSensor` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.UltraSonicSensor` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.UltraSonicSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.UltraSonicSensor` class.
 
-        """
-        return easysensors.UltraSonicSensor(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.UltraSonicSensor(port, self, use_mutex=self.use_mutex)
 
-    def init_buzzer(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.Buzzer` object and then returns it.
+#     def init_buzzer(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.Buzzer` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.Buzzer` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.Buzzer` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Buzzer` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Buzzer` class.
 
-        """
-        return easysensors.Buzzer(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.Buzzer(port, self, use_mutex=self.use_mutex)
 
-    def init_led(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.Led` object and then returns it.
+#     def init_led(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.Led` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.Led` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.Led` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Led` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Led` class.
 
-        """
-        return easysensors.Led(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.Led(port, self, use_mutex=self.use_mutex)
 
-    def init_button_sensor(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.ButtonSensor` object and then returns it.
+#     def init_button_sensor(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.ButtonSensor` object and then returns it.
 
-        :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.ButtonSensor` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be either ``"AD1"`` or ``"AD2"``. By default it's set to be ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.ButtonSensor` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.ButtonSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.ButtonSensor` class.
 
-        """
-        return easysensors.ButtonSensor(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.ButtonSensor(port, self, use_mutex=self.use_mutex)
 
-    def init_line_follower(self, port = "I2C"):
-        """
-        Initialises a :py:class:`~di_sensors.easy_line_follower.EasyLineFollower` object and then returns it.
+#     def init_line_follower(self, port = "I2C"):
+#         """
+#         Initialises a :py:class:`~di_sensors.easy_line_follower.EasyLineFollower` object and then returns it.
 
-        :param str port = "I2C": The only option for this parameter for the old Line Follower Sensor (red board) is ``"I2C"`` and for the `Line Follower Sensor`_ (black board) it can also be ``"AD1"``/``"AD2"``. The default value for this parameter is already set to ``"I2C"``.
-        :returns: An instance of the :py:class:`~di_sensors.easy_line_follower.EasyLineFollower` class and with the port set to ``port``'s value.
+#         :param str port = "I2C": The only option for this parameter for the old Line Follower Sensor (red board) is ``"I2C"`` and for the `Line Follower Sensor`_ (black board) it can also be ``"AD1"``/``"AD2"``. The default value for this parameter is already set to ``"I2C"``.
+#         :returns: An instance of the :py:class:`~di_sensors.easy_line_follower.EasyLineFollower` class and with the port set to ``port``'s value.
 
-        The ``"I2C"``, ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"I2C"``, ``"AD1"`` and ``"AD2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        .. tip::
+#         .. tip::
 
-             | The sensor can be connected to any of the I2C ports.
-             | You can connect different I2C devices simultaneously provided that:
+#              | The sensor can be connected to any of the I2C ports.
+#              | You can connect different I2C devices simultaneously provided that:
 
-                * The I2C devices have different addresses.
-                * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
+#                 * The I2C devices have different addresses.
+#                 * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_line_follower.EasyLineFollower` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_line_follower.EasyLineFollower` class.
 
-        """
-        if di_sensors_available is False:
-            raise ImportError("di_sensors library not found")
+#         """
+#         if di_sensors_available is False:
+#             raise ImportError("di_sensors library not found")
 
-        lf = easy_line_follower.EasyLineFollower(port, use_mutex=self.use_mutex)
-        if lf._sensor_id == 0:
-            raise OSError("line follower is not reachable")
+#         lf = easy_line_follower.EasyLineFollower(port, use_mutex=self.use_mutex)
+#         if lf._sensor_id == 0:
+#             raise OSError("line follower is not reachable")
 
-        return lf
+#         return lf
 
-    def init_servo(self, port = "SERVO1"):
-        """
-        Initialises a :py:class:`~easysensors.Servo` object and then returns it.
+#     def init_servo(self, port = "SERVO1"):
+#         """
+#         Initialises a :py:class:`~easysensors.Servo` object and then returns it.
 
-        :param str port = "SERVO1": Can be either ``"SERVO1"`` or ``"SERVO2"``. By default it's set to be ``"SERVO1"``.
-        :returns: An instance of the :py:class:`~easysensors.Servo` class and with the port set to ``port``'s value.
+#         :param str port = "SERVO1": Can be either ``"SERVO1"`` or ``"SERVO2"``. By default it's set to be ``"SERVO1"``.
+#         :returns: An instance of the :py:class:`~easysensors.Servo` class and with the port set to ``port``'s value.
 
-        The ``"SERVO1"`` and ``"SERVO2"`` ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ``"SERVO1"`` and ``"SERVO2"`` ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Servo` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Servo` class.
 
-        """
-        return easysensors.Servo(port, self, use_mutex=self.use_mutex)
+#         """
+#         return easysensors.Servo(port, self, use_mutex=self.use_mutex)
 
-    def init_distance_sensor(self, port = "I2C"):
-        """
+#     def init_distance_sensor(self, port = "I2C"):
+#         """
 
-        Initialises a :py:class:`~di_sensors.easy_distance_sensor.EasyDistanceSensor` object and then returns it.
+#         Initialises a :py:class:`~di_sensors.easy_distance_sensor.EasyDistanceSensor` object and then returns it.
 
-        :param str port = "I2C": The options for this parameter are ``"I2C"`` by default, ``"AD1"``, or ``"AD2"``.
-        :returns: An instance of the :py:class:`~di_sensors.easy_distance_sensor.EasyDistanceSensor` class and with the port set to ``port``'s value.
-        :raises ImportError: When the :py:mod:`di_sensors` module can't be found. Check the `DI-Sensors`_ documentation on how to install the libraries.
+#         :param str port = "I2C": The options for this parameter are ``"I2C"`` by default, ``"AD1"``, or ``"AD2"``.
+#         :returns: An instance of the :py:class:`~di_sensors.easy_distance_sensor.EasyDistanceSensor` class and with the port set to ``port``'s value.
+#         :raises ImportError: When the :py:mod:`di_sensors` module can't be found. Check the `DI-Sensors`_ documentation on how to install the libraries.
 
-        The ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_distance_sensor.EasyDistanceSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_distance_sensor.EasyDistanceSensor` class.
 
-        .. tip::
+#         .. tip::
 
-             | The sensor can be connected to any of the I2C ports.
-             | You can connect different I2C devices simultaneously provided that:
+#              | The sensor can be connected to any of the I2C ports.
+#              | You can connect different I2C devices simultaneously provided that:
 
-                * The I2C devices have different addresses.
-                * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
+#                 * The I2C devices have different addresses.
+#                 * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
 
-             | If the devices share the same address, like two distance sensors for example, you can still use them with the GoPiGo3 provided at least one is connected via the ``"AD1"``, or ``"AD2"``, port.
+#              | If the devices share the same address, like two distance sensors for example, you can still use them with the GoPiGo3 provided at least one is connected via the ``"AD1"``, or ``"AD2"``, port.
 
-        """
-        if di_sensors_available is False:
-            raise ImportError("di_sensors library not available")
+#         """
+#         if di_sensors_available is False:
+#             raise ImportError("di_sensors library not available")
 
-        try:
-            d = easy_distance_sensor.EasyDistanceSensor(port=port, use_mutex=self.use_mutex)
-        except Exception as e:
-            # print(e)
-            d = None
+#         try:
+#             d = easy_distance_sensor.EasyDistanceSensor(port=port, use_mutex=self.use_mutex)
+#         except Exception as e:
+#             # print(e)
+#             d = None
 
-        return d
+#         return d
 
-    def init_light_color_sensor(self, port = "I2C", led_state=True):
-        """
+#     def init_light_color_sensor(self, port = "I2C", led_state=True):
+#         """
 
-        Initialises a :py:class:`~di_sensors.easy_light_color_sensor.EasyLightColorSensor` object and then returns it.
+#         Initialises a :py:class:`~di_sensors.easy_light_color_sensor.EasyLightColorSensor` object and then returns it.
 
-        :param str port = "I2C": The options for this parameter are ``"I2C"`` by default, ``"AD1"``, or ``"AD2"``.
-        :param boolean led_state = False: Turns the onboard LED on or off. It's best to have it on in order to detect color, and off in order to detect light value.
-        :returns: An instance of the :py:class:`~di_sensors.easy_light_color_sensor.EasyLightColorSensor` class and with the port set to ``port``'s value.
-        :raises ImportError: When the :py:mod:`di_sensors` module can't be found. Check the `DI-Sensors`_ documentation on how to install the libraries.
+#         :param str port = "I2C": The options for this parameter are ``"I2C"`` by default, ``"AD1"``, or ``"AD2"``.
+#         :param boolean led_state = False: Turns the onboard LED on or off. It's best to have it on in order to detect color, and off in order to detect light value.
+#         :returns: An instance of the :py:class:`~di_sensors.easy_light_color_sensor.EasyLightColorSensor` class and with the port set to ``port``'s value.
+#         :raises ImportError: When the :py:mod:`di_sensors` module can't be found. Check the `DI-Sensors`_ documentation on how to install the libraries.
 
-        The ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_light_color_sensor.EasyLightColorSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_light_color_sensor.EasyLightColorSensor` class.
 
-        .. tip::
+#         .. tip::
 
-             | The sensor can be connected to any of the I2C ports.
-             | You can connect different I2C devices simultaneously provided that:
+#              | The sensor can be connected to any of the I2C ports.
+#              | You can connect different I2C devices simultaneously provided that:
 
-                * The I2C devices have different addresses.
-                * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
+#                 * The I2C devices have different addresses.
+#                 * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
 
-             | If the devices share the same address, like two light/color sensors for example, you can still use them with the GoPiGo3 provided at least one is connected via the ``"AD1"``, or ``"AD2"``, port.
+#              | If the devices share the same address, like two light/color sensors for example, you can still use them with the GoPiGo3 provided at least one is connected via the ``"AD1"``, or ``"AD2"``, port.
 
-        """
-        if di_sensors_available is False:
-            raise ImportError("di_sensors library not available")
+#         """
+#         if di_sensors_available is False:
+#             raise ImportError("di_sensors library not available")
 
-        try:
-            lc = easy_light_color_sensor.EasyLightColorSensor(port=port, led_state=led_state, use_mutex=self.use_mutex)
-        except Exception as e:
-            # print(e)
-            lc = None
+#         try:
+#             lc = easy_light_color_sensor.EasyLightColorSensor(port=port, led_state=led_state, use_mutex=self.use_mutex)
+#         except Exception as e:
+#             # print(e)
+#             lc = None
 
-        return lc
+#         return lc
 
-    def init_imu_sensor(self, port = "I2C"):
-        """
+#     def init_imu_sensor(self, port = "I2C"):
+#         """
 
-        Initialises a :py:class:`~di_sensors.easy_inertial_measurement_unit.EasyIMUSensor` object and then returns it.
+#         Initialises a :py:class:`~di_sensors.easy_inertial_measurement_unit.EasyIMUSensor` object and then returns it.
 
-        :param str port = "AD1": The options for this parameter are ``"AD1"`` by default, ``"AD2"``.
-        :returns: An instance of the :py:class:`~di_sensors.easy_inertial_measurement_unit.EasyIMUSensor` class and with the port set to ``port``'s value.
-        :raises ImportError: When the :py:mod:`di_sensors` module can't be found. Check the `DI-Sensors`_ documentation on how to install the libraries.
+#         :param str port = "AD1": The options for this parameter are ``"AD1"`` by default, ``"AD2"``.
+#         :returns: An instance of the :py:class:`~di_sensors.easy_inertial_measurement_unit.EasyIMUSensor` class and with the port set to ``port``'s value.
+#         :raises ImportError: When the :py:mod:`di_sensors` module can't be found. Check the `DI-Sensors`_ documentation on how to install the libraries.
 
-        The ports are mapped to the following :ref:`hardware-ports-section`.
+#         The ports are mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_inertial_measurement_unit.EasyIMUSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~di_sensors.easy_inertial_measurement_unit.EasyIMUSensor` class.
 
-        .. tip::
+#         .. tip::
 
-             | The sensor can be connected to any of the I2C ports.
-             | You can connect different I2C devices simultaneously provided that:
+#              | The sensor can be connected to any of the I2C ports.
+#              | You can connect different I2C devices simultaneously provided that:
 
-                * The I2C devices have different addresses.
-                * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
+#                 * The I2C devices have different addresses.
+#                 * The I2C devices are recognizeable by the `GoPiGo3`_ platform.
 
-             | If the devices share the same address, like two IMU sensors for example, you can still use them with the GoPiGo3 provided at least one is connected via the ``"AD1"``, or ``"AD2"``, port.
+#              | If the devices share the same address, like two IMU sensors for example, you can still use them with the GoPiGo3 provided at least one is connected via the ``"AD1"``, or ``"AD2"``, port.
 
-        """
+#         """
 
-        if di_sensors_available is False:
-            raise ImportError("di_sensors library not available")
+#         if di_sensors_available is False:
+#             raise ImportError("di_sensors library not available")
 
-        try:
-            imu = easy_inertial_measurement_unit.EasyIMUSensor(port=port, use_mutex=self.use_mutex)
-        except Exception as e:
-            # print(e)
-            imu = None
+#         try:
+#             imu = easy_inertial_measurement_unit.EasyIMUSensor(port=port, use_mutex=self.use_mutex)
+#         except Exception as e:
+#             # print(e)
+#             imu = None
 
-        return imu
+#         return imu
 
-    def init_dht_sensor(self, sensor_type = 0):
-        """
-        Initialises a :py:class:`~easysensors.DHTSensor` object and then returns it.
+#     def init_dht_sensor(self, sensor_type = 0):
+#         """
+#         Initialises a :py:class:`~easysensors.DHTSensor` object and then returns it.
 
-        :param int sensor_type = 0: Choose ``sensor_type = 0`` when you have the blue-coloured DHT sensor or ``sensor_type = 1`` when it's white.
-        :returns: An instance of the :py:class:`~easysensors.DHTSensor` class and with the port set to ``port``'s value.
+#         :param int sensor_type = 0: Choose ``sensor_type = 0`` when you have the blue-coloured DHT sensor or ``sensor_type = 1`` when it's white.
+#         :returns: An instance of the :py:class:`~easysensors.DHTSensor` class and with the port set to ``port``'s value.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.DHTSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.DHTSensor` class.
 
-        .. important::
+#         .. important::
 
-            The only port to which this device can be connected is the ``"SERIAL"`` port, so therefore, there's no need
-            for a parameter which specifies the port of device because we've only got one available.
+#             The only port to which this device can be connected is the ``"SERIAL"`` port, so therefore, there's no need
+#             for a parameter which specifies the port of device because we've only got one available.
 
-            The ``"SERIAL"`` port is mapped to the following :ref:`hardware-ports-section`.
+#             The ``"SERIAL"`` port is mapped to the following :ref:`hardware-ports-section`.
 
-        """
-        return easysensors.DHTSensor(self, sensor_type, self.use_mutex)
+#         """
+#         return easysensors.DHTSensor(self, sensor_type, self.use_mutex)
 
-    def init_remote(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.Remote` object and then returns it.
+#     def init_remote(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.Remote` object and then returns it.
 
-        :param str port = "AD1": Can be set to either ``"AD1"`` or ``"AD2"``. Set by default to ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.Remote` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be set to either ``"AD1"`` or ``"AD2"``. Set by default to ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.Remote` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` port is mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` port is mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Remote` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.Remote` class.
 
-        """
-        return easysensors.Remote(port, self, self.use_mutex)
+#         """
+#         return easysensors.Remote(port, self, self.use_mutex)
 
-    def init_motion_sensor(self, port="AD1"):
-        """
-        Initialises a :py:class:`~easysensors.MotionSensor` object and then returns it
+#     def init_motion_sensor(self, port="AD1"):
+#         """
+#         Initialises a :py:class:`~easysensors.MotionSensor` object and then returns it
 
-        :param str port = "AD1": Can be set to either ``"AD1"`` or ``"AD2"``. Set by default to ``"AD1"``.
-        :returns: An instance of the :py:class:`~easysensors.MotionSensor` class and with the port set to ``port``'s value.
+#         :param str port = "AD1": Can be set to either ``"AD1"`` or ``"AD2"``. Set by default to ``"AD1"``.
+#         :returns: An instance of the :py:class:`~easysensors.MotionSensor` class and with the port set to ``port``'s value.
 
-        The ``"AD1"`` port is mapped to the following :ref:`hardware-ports-section`.
+#         The ``"AD1"`` port is mapped to the following :ref:`hardware-ports-section`.
 
-        The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.MotionSensor` class.
+#         The ``use_mutex`` parameter of the :py:meth:`~easygopigo3.EasyGoPiGo3.__init__` constructor is passed down to the constructor of :py:class:`~easysensors.MotionSensor` class.
 
-        """
+#         """
 
-        return easysensors.MotionSensor(port, self, self.use_mutex)
+#         return easysensors.MotionSensor(port, self, self.use_mutex)
 
 
 
@@ -1183,77 +1183,77 @@ def old_instantiation(fct_to_call,
     print(deprecated_msg.format(sensor_description))
     return fct_to_call(port=port)
 
-def LightSensor(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.LightSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_light_sensor, "light sensor", port, gpg, use_mutex)
+# def LightSensor(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.LightSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_light_sensor, "light sensor", port, gpg, use_mutex)
 
-def SoundSensor(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.SoundSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_sound_sensor, "sound sensor", port, gpg, use_mutex)
+# def SoundSensor(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.SoundSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_sound_sensor, "sound sensor", port, gpg, use_mutex)
 
-def LoudnessSensor(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.LoudnessSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_loudness_sensor, "loudness sensor", port, gpg, use_mutex)
+# def LoudnessSensor(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.LoudnessSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_loudness_sensor, "loudness sensor", port, gpg, use_mutex)
 
-def UltraSonicSensor(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.UltraSonicSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_ultrasonic_sensor, "ultrasonic sensor", port, gpg, use_mutex)
+# def UltraSonicSensor(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.UltraSonicSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_ultrasonic_sensor, "ultrasonic sensor", port, gpg, use_mutex)
 
-def Buzzer(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.Buzzer` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_buzzer, "buzzer", port, gpg, use_mutex)
+# def Buzzer(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.Buzzer` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_buzzer, "buzzer", port, gpg, use_mutex)
 
-def Led(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.Led` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_led, "LED", port, gpg, use_mutex)
+# def Led(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.Led` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_led, "LED", port, gpg, use_mutex)
 
-def MotionSensor(port="AD1", gpg=None, use_mutex = False):
-    """
-    Use :py:class:`easysensors.MotionSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_motion_sensor, "motion sensor", port, gpg, use_mutex)
+# def MotionSensor(port="AD1", gpg=None, use_mutex = False):
+#     """
+#     Use :py:class:`easysensors.MotionSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_motion_sensor, "motion sensor", port, gpg, use_mutex)
 
-def ButtonSensor(port="AD1", gpg=None, use_mutex=False):
-    """
-    Use :py:class:`easysensors.ButtonSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_button_sensor, "button sensor", port, gpg, use_mutex)
+# def ButtonSensor(port="AD1", gpg=None, use_mutex=False):
+#     """
+#     Use :py:class:`easysensors.ButtonSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_button_sensor, "button sensor", port, gpg, use_mutex)
 
-def Remote(port="AD1", gpg=None, use_mutex=False):
-    """
-    Use :py:class:`easysensors.Remote` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_remote, "remote", port, gpg, use_mutex)
+# def Remote(port="AD1", gpg=None, use_mutex=False):
+#     """
+#     Use :py:class:`easysensors.Remote` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_remote, "remote", port, gpg, use_mutex)
 
 def LineFollower(port="I2C", gpg=None, use_mutex=False):
     """
@@ -1268,32 +1268,32 @@ def LineFollower(port="I2C", gpg=None, use_mutex=False):
 
     return lf
 
-def Servo(port="SERVO1", gpg=None, use_mutex=False):
-    """
-    Use :py:class:`easysensors.Servo` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_servo, "servo", port, gpg, use_mutex)
+# def Servo(port="SERVO1", gpg=None, use_mutex=False):
+#     """
+#     Use :py:class:`easysensors.Servo` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_servo, "servo", port, gpg, use_mutex)
 
-def DistanceSensor(port="I2C", gpg=None, use_mutex=False):
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
-    return old_instantiation(gpg.init_distance_sensor, "distance sensor", port, gpg, use_mutex)
+# def DistanceSensor(port="I2C", gpg=None, use_mutex=False):
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+#     return old_instantiation(gpg.init_distance_sensor, "distance sensor", port, gpg, use_mutex)
 
-def DHTSensor(gpg=None, sensor_type=0, use_mutex=False):
-    """
-    Use :py:class:`easysensors.DHTSensor` instead
-    """
-    if not isinstance(gpg, gopigo3.GoPiGo3):
-        raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
+# def DHTSensor(gpg=None, sensor_type=0, use_mutex=False):
+#     """
+#     Use :py:class:`easysensors.DHTSensor` instead
+#     """
+#     if not isinstance(gpg, gopigo3.GoPiGo3):
+#         raise TypeError("Use a GoPiGo3 object for the gpg parameter.")
 
-    if gpg.use_mutex != use_mutex:
-        msg = "Invalid use of mutex: the GoPiGo3 {} mutex protection and the distance sensor {}."
-        raise ValueError(msg.format(
-            "uses" if gpg.use_mutex else "does not use",
-            "does" if use_mutex else "does not"))
+#     if gpg.use_mutex != use_mutex:
+#         msg = "Invalid use of mutex: the GoPiGo3 {} mutex protection and the distance sensor {}."
+#         raise ValueError(msg.format(
+#             "uses" if gpg.use_mutex else "does not use",
+#             "does" if use_mutex else "does not"))
 
-    warnings.warn(deprecated_msg.format(sensor_description), DeprecationWarning)
-    print(deprecated_msg.format(sensor_description))
-    return gpg.init_dht_sensor(sensor_type=sensor_type)
+#     warnings.warn(deprecated_msg.format(sensor_description), DeprecationWarning)
+#     print(deprecated_msg.format(sensor_description))
+#     return gpg.init_dht_sensor(sensor_type=sensor_type)

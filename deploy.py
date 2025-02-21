@@ -9,6 +9,8 @@ Purpose: Deployment Code for Final NASA Space Grant
 import ir_remote_navigation
 import keyboard_navigation
 
+import easygopigo3
+
 
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
 # Copyright (c) 2017 Dexter Industries Released under the MIT license
