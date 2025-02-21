@@ -58,6 +58,7 @@ from tkinter import messagebox
 # import nav_ps4 # run as a thread------- getting stuck!
 #import nav_remote
 from threading import Thread
+from threading import Event
 from time import sleep
      
 #TODO: create deployment class
@@ -66,6 +67,9 @@ class PioneerDeploy:
     def __init__(self, root):
         # toggles, autonomous GUI keyboard hand
         self.is_autonomous = False
+
+        self.stop_event = Event()
+        self.thread = None
         
         # Initialize class with main Tkinter window
         self.main_window = root
@@ -366,23 +370,23 @@ class PioneerDeploy:
         
 #--XX--Threading (IR Remote navigation)--------------------------------------------------------------------#
     def ir_remote_navigation(self):
-        while not self.stop_thread:
-            ir_remote_navigation.start_ir_navigation()
-            sleep(1)
+        ir_remote_navigation.start_ir_navigation(self.stop_event)
         
     def start_ir_remote_navigation(self):
-        self.stop_thread = False
+        self.stop_event.clear()
         # create a new thread object
         self.thread = Thread(
-            target=self.ir_remote_navigation, # funciton to run in the thread
+            target=self.ir_remote_navigation, # function to run in the thread
             daemon=True                       # thread stops when program ends
         )
         # start the thread's execution
         self.thread.start()
         
     def stop_ir_remote_navigation(self):
-        self.stop_thread = True
-        self.thread.join()
+        self.stop_event.set()
+        if self.thread:
+            self.thread.join()
+            self.thread = None
         
 #--Threading (Sensors)----------------------------------------------------------------------------------#
     def sensors(self):

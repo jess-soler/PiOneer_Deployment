@@ -53,7 +53,16 @@ def start_ir_navigation():
         gpg.GROVE_1,
         gpg.GROVE_TYPE.IR_DI_REMOTE
     )
-    while True:
+def start_ir_navigation(stop_event):
+    print("Use the arrows on your remote controller to control your GoPiGo3")
+    print("The IR Receiver (remote sensor) should be connected to port AD1")
+    print("Ctrl-C to exit the program")
+    
+    gpg.set_grove_type(
+        gpg.GROVE_1,
+        gpg.GROVE_TYPE.IR_DI_REMOTE
+    )
+    while not stop_event.is_set():
         try:
             read_ir_keys()
         except KeyboardInterrupt:
@@ -61,3 +70,4 @@ def start_ir_navigation():
             exit(0)
         except:
             pass
+    gpg.reset_all()
