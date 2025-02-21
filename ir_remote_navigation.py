@@ -23,7 +23,7 @@ def read_ir_keys():
     global value_last
     try:
         value = gpg.get_grove_value(gpg.GROVE_1)
-        print(value)
+        #print(value)
         if value != value_last:
             value_last = value
             if value == 10: # forward

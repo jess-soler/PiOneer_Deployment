@@ -108,6 +108,10 @@ class PioneerDeploy:
         self.thingspeak_frame = tk.Frame(self.main_frame, bd=2, relief=tk.RAISED)
         self.thingspeak_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         
+        # Create a frame to control the deployment and exit the program
+        self.control_frame = tk.Frame(self.main_frame, bd=2, relief=tk.RAISED)
+        self.control_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
 #---Create Widgets---------------------------------------------------------------#
     def create_widgets(self):
         # Create the navigation buttons
@@ -149,6 +153,14 @@ class PioneerDeploy:
         # Create the ThingSpeak
         self.thingspeak_label = tk.Label(self.thingspeak_frame, text="ThingSpeak", font=("Arial", 16))
         self.thingspeak_label.pack(pady=10)
+        
+        # Create the stop all threads button
+        self.stop_all_threads_button = tk.Button(self.control_frame, text="Stop All Threads", font=("Arial", 12), command=self.stop_all_threads)
+        self.stop_all_threads_button.pack(pady=10)
+
+        # Create the exit program button
+        self.exit_program_button = tk.Button(self.control_frame, text="Exit Program", font=("Arial", 12), command=self.exit_program)
+        self.exit_program_button.pack(pady=10)
 
 #---TOGGLES-----------------------------------------------------------------------------------#
 #---Toggle Function, Button Commands to stop/start mutli threading ---------------------------#
@@ -448,6 +460,26 @@ class PioneerDeploy:
         self.stop_thread = True
         self.thread.join()
         
+#--Stop All Threads-----------------------------------------------------------------------------------#
+#--Exit Program---------------------------------------------------------------------------------------#
+    def stop_all_threads(self):
+        # Stop all threads by setting the stop event and joining the thread
+        self.stop_event.set()
+        if self.thread:
+            self.thread.join()
+            self.thread = None
+        messagebox.showinfo(
+            "All Threads Stopped",
+            "All threads have been stopped."
+        )
+        print("All threads stopped.")
+
+    def exit_program(self):
+        # Stop all threads before exiting
+        self.stop_all_threads()
+        # Exit the program
+        self.main_window.quit()
+        print("Program exited.")
 
         
         
