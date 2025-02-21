@@ -351,7 +351,7 @@ class PioneerDeploy:
 #--Threading (IR Remote navigation)--------------------------------------------------------------------#
     def ir_remote_navigation(self):
         while not self.stop_thread:
-            ir_remote_navigation.read_ir_keys()
+            ir_remote_navigation.start_ir_navigation()
             sleep(1)
         
     def start_ir_remote_navigation(self):
