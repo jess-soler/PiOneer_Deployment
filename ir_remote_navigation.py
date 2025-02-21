@@ -27,13 +27,13 @@ def read_ir_keys():
         if value != value_last:
             value_last = value
             if value == 10: # forward
-                gpg.set_motor_dps(gpg.MOTOR_LEFT,  300)
-                gpg.set_motor_dps(gpg.MOTOR_RIGHT,  300)
+                gpg.set_motor_dps(gpg.MOTOR_LEFT, 300)
+                gpg.set_motor_dps(gpg.MOTOR_RIGHT, 300)
             elif value == 12: # turn left
                 gpg.set_motor_dps(gpg.MOTOR_LEFT, -150)
-                gpg.set_motor_dps(gpg.MOTOR_RIGHT,  150)
+                gpg.set_motor_dps(gpg.MOTOR_RIGHT, 150)
             elif value == 14: # turn right
-                gpg.set_motor_dps(gpg.MOTOR_LEFT,  150)
+                gpg.set_motor_dps(gpg.MOTOR_LEFT, 150)
                 gpg.set_motor_dps(gpg.MOTOR_RIGHT, -150)
             elif value == 16: # reverse
                 gpg.set_motor_dps(gpg.MOTOR_LEFT, -300)
@@ -44,15 +44,6 @@ def read_ir_keys():
     except IOError or easygopigo3.SensorError as e:
         pass
 
-def start_ir_navigation():
-    print("Use the arrows on your remote controller to control your GoPiGo3")
-    print("The IR Receiver (remote sensor) should connected to port AD1")
-    print("Ctrl-C to exit the program")
-    
-    gpg.set_grove_type(
-        gpg.GROVE_1,
-        gpg.GROVE_TYPE.IR_DI_REMOTE
-    )
 def start_ir_navigation(stop_event):
     print("Use the arrows on your remote controller to control your GoPiGo3")
     print("The IR Receiver (remote sensor) should be connected to port AD1")
