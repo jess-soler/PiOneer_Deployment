@@ -268,7 +268,7 @@ class PioneerDeploy:
 #--THREADING--------------------------------------------------------------------------------------------#
 #--Threading (obstacle avoidance)-----------------------------------------------------------------------#
     def obstacle_avoidance(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("Obstacle Avoidance!!!!!!")
             sleep(1)
         
@@ -288,7 +288,7 @@ class PioneerDeploy:
 
 #--Threading (GUI navigation)---------------------------------------------------------------------------#
     def gui_navigation(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("GUI Navigation!!!!!!!")
             sleep(1)
         
@@ -308,7 +308,7 @@ class PioneerDeploy:
         
 #--XX--Threading (Keyboard navigation)---------------------------------------------------------------------#
     def keyboard_navigation(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             keyboard_navigation.main()
             messagebox.showinfo(
                 "Keyboard Navigation",
@@ -339,7 +339,7 @@ class PioneerDeploy:
 
 #--Threading (Hand navigation)-------------------------------------------------------------------------#
     def hand_navigation(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("Hand Navigation!!!!")
             sleep(1)
         
@@ -359,7 +359,7 @@ class PioneerDeploy:
         
 #--Threading (PS4 controller navigation)---------------------------------------------------------------#
     def ps4_navigation(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("PS4 Controller Navigation!!!!!!!")
             sleep(1)
         # Add code to initiate PS4 controller navigation control here
@@ -402,7 +402,7 @@ class PioneerDeploy:
         
 #--Threading (Sensors)----------------------------------------------------------------------------------#
     def sensors(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("Sensors!!!!!!!")
             sleep(1)
         
@@ -422,7 +422,7 @@ class PioneerDeploy:
         
 #--Threading (Video Stream)----------------------------------------------------------------------------#
     def video_stream(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("Video Stream!!!!!!!")
             sleep(1)
         
@@ -442,7 +442,7 @@ class PioneerDeploy:
         
 #--Threading (ThingSpeak)------------------------------------------------------------------------------#
     def thingspeak(self):
-        while not self.stop_thread:
+        while not self.stop_thread.is_set():
             print("ThingSpeak!!!!!!!")
             sleep(1)
         
