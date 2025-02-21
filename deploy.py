@@ -95,6 +95,8 @@ class PioneerDeploy:
         # Create a frame for the navigation buttons
         self.nav_frame = tk.Frame(self.main_frame, bd=2, relief=tk.RAISED)
         self.nav_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.nav_label = tk.Label(self.nav_frame, text="Navigation", font=("Arial", 16))
+        self.nav_label.pack(pady=10)
         
         # Create a frame for the sensor buttons
         self.sensor_frame = tk.Frame(self.main_frame, bd=2, relief=tk.RAISED)
