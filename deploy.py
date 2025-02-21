@@ -5,7 +5,9 @@ Created: 1/10/2025
 Purpose: Deployment Code for Final NASA Space Grant
 """
 
+# Navigation Modules
 import ir_remote_navigation
+import keyboard_navigation
 
 
 # EasyGoPiGo3 documentation: https://gopigo3.readthedocs.io/en/latest
@@ -50,6 +52,7 @@ import ir_remote_navigation
 
 # LIBRARIES
 import tkinter as tk
+from tkinter import messagebox
 # import nav_ps4 # run as a thread------- getting stuck!
 #import nav_remote
 from threading import Thread
@@ -285,10 +288,21 @@ class PioneerDeploy:
         self.stop_thread = True
         self.thread.join()
         
-#--Threading (Keyboard navigation)---------------------------------------------------------------------#
+#--XX--Threading (Keyboard navigation)---------------------------------------------------------------------#
     def keyboard_navigation(self):
         while not self.stop_thread:
-            print("Keyboard Navigation!!!!!!!")
+            keyboard_navigation.main()
+            messagebox.showinfo(
+                "Keyboard Navigation",
+                "Use the arrow keys to navigate the rover.",
+                "w: Move GoPiGo Robot forward",
+                "d: Turn GoPiGo Robot right",
+                "s: Move GoPiGo Robot backward",
+                "a: Turn GoPiGo Robot left",
+                "space bar: Stop GoPiGo Robot",
+                "z: Exit program????",
+                "Speed: " + str(keyboard_navigation.gpg.get_speed())
+            )
             sleep(1)
     
     def start_keyboard_navigation(self):
@@ -308,7 +322,7 @@ class PioneerDeploy:
 #--Threading (Hand navigation)-------------------------------------------------------------------------#
     def hand_navigation(self):
         while not self.stop_thread:
-            print("Hand Navigation!!!!!!!")
+            print("Hand Navigation!!!!")
             sleep(1)
         
     def start_hand_navigation(self):
@@ -348,7 +362,7 @@ class PioneerDeploy:
         self.stop_thread = True
         self.thread.join()
         
-#--Threading (IR Remote navigation)--------------------------------------------------------------------#
+#--XX--Threading (IR Remote navigation)--------------------------------------------------------------------#
     def ir_remote_navigation(self):
         while not self.stop_thread:
             ir_remote_navigation.start_ir_navigation()
